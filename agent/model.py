@@ -45,7 +45,10 @@ def score(record, m):
 
     Hint: np.array(m["weights"]) turns the list into a vector; use z @ w.
     """
-    raise NotImplementedError("Lab 1: implement score() in agent/model.py")
+    z = standardize(record, m)
+    w = np.array(m["weights"])
+    logit = z @ w + m["bias"]
+    return float(sigmoid(logit))
 
 
 def top_drivers(record, m, k=3):
